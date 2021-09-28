@@ -74,5 +74,14 @@ public class Liste {
 	        return ' ';
 	                
 	    }
-	
+	public static boolean rechercheListe(String code, Liste l) {
+		while(l!=null) {
+			String codeM = l.morse.code;
+        	if(codeM.equals(code)) {
+        		return true;
+        	}
+			l=l.suite;
+		}
+		return false;
+	}
 }
