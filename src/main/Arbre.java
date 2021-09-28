@@ -1,5 +1,5 @@
 package main;
-
+// Class utile a l'arbre binaire 
 public class Arbre {
 	Arbre filsg;
 	Morse feuille;

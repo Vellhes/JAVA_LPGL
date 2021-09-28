@@ -31,7 +31,7 @@ public class Liste {
 	public String toString() {
 		return "Morse=" + morse + ", suite=" + suite + "";
 	}
-	
+	// Fonction qui instancie la liste a partir du fichier morse.txt
 	public static Liste creerListe() throws IOException {
 		File file = new File("src/morse.txt");    
 	      // Créer l'objet File Reader
@@ -43,25 +43,30 @@ public class Liste {
 	      Liste p = null;
 	      while((ligne = br.readLine()) != null)
 	      {
+	    	//récupère la lettre en début de ligne  
 	    	char lettre = ligne.charAt(0);
+	    	//récupère le code correspondant
 	    	ligne = ligne.substring(4);
+	    	//créé l'objet morse connectant le code et la lettre
 	        Morse morse = new Morse(lettre,ligne);
+	        // affectation a la liste
 	        liste = new Liste(morse,p);
 	        p=liste;
 	      }
 	      fr.close();
 		return liste;  
 	}
-	
+	//Fonction qui retourne le code morse d'une lettre donnée a partir de la liste.
 	public static String recupMorse(char c) throws IOException {
 		Liste liste = creerListe();
+		//passage en majuscule pour éviter les erreurs
 		c=Character.toUpperCase(c);
 		while(liste.morse.lettre != c) {
 			liste = liste.suite;
 		}
 		return liste.morse.code;
 	}
-	
+	// Fonction qui retourne la lettre liée au code morse depuis la liste
 	public static char recupChar(String code) throws IOException {
 	        Liste liste = creerListe();
 	        while(liste!=null) {
@@ -74,11 +79,12 @@ public class Liste {
 	        return ' ';
 	                
 	    }
-	 
+	 //Fonction qui renvoie la lettre liée au code morse en utilisant l'arbre binaire
 	public static char recupTexte(String code, Arbre arbre) throws IOException {
 		 int i = 0;
 		 char lettre = ' ';
 		 while(i!=code.length()) {
+			 	//décomposition du code morse signal par signal
 	        	if(code.charAt(i)=='.') {
 	        		arbre=arbre.filsg;
 	        	}
@@ -91,7 +97,7 @@ public class Liste {
 	        return lettre;
 	                
 	    }
-	 
+	 //Cette fonction renvoie un booléen, a true si le code se trouve dans la liste, a false si il ne s'y trouve pas
 	public static boolean rechercheListe(String code, Liste l) {
 		while(l!=null) {
 			String codeM = l.morse.code;
@@ -102,13 +108,14 @@ public class Liste {
 		}
 		return false;
 	}
-
+	//Fonction qui retourne une liste après un ajout en Tête
 	public static Liste ajoutListe(Morse morse, Liste liste) {
 		Liste liste2 = new Liste(morse,liste);
 		return liste2;
 	}
-	
+	//Fonction qui supprime un element de la liste
 	public static Liste supprListe(String code, Liste liste) {
+		//vérification de la présence du code dans la liste
 		boolean verif = rechercheListe(code,liste);
 		Liste p = liste;
 		Liste r = p;
