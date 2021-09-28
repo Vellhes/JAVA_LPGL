@@ -62,7 +62,7 @@ public class Liste {
 		return liste.morse.code;
 	}
 	
-	 public static char recupTexte(String code) throws IOException {
+	public static char recupChar(String code) throws IOException {
 	        Liste liste = creerListe();
 	        while(liste!=null) {
 	        	String codeM = liste.morse.code;
@@ -74,6 +74,24 @@ public class Liste {
 	        return ' ';
 	                
 	    }
+	 
+	public static char recupTexte(String code, Arbre arbre) throws IOException {
+		 int i = 0;
+		 char lettre = ' ';
+		 while(i!=code.length()) {
+	        	if(code.charAt(i)=='.') {
+	        		arbre=arbre.filsg;
+	        	}
+	        	else if(code.charAt(i)=='-') {
+	        		arbre=arbre.filsd;
+	        	}
+	        	i++;
+	        	lettre = arbre.feuille.lettre;
+	        }
+	        return lettre;
+	                
+	    }
+	 
 	public static boolean rechercheListe(String code, Liste l) {
 		while(l!=null) {
 			String codeM = l.morse.code;
@@ -84,4 +102,17 @@ public class Liste {
 		}
 		return false;
 	}
+
+	public static Liste ajoutListe(Morse morse, Liste liste) {
+		Liste liste2 = new Liste(morse,liste);
+		return liste2;
+	}
+	
+	public static Liste supprListe(String code, Liste liste) {
+		boolean verif = rechercheListe(code,liste);
+		
+		return liste;
+	}
 }
+
+

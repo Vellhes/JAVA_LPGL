@@ -39,7 +39,7 @@ public class Trad {
 		Arbre a = new Arbre();
 		Arbre g = null;
 		Arbre d = null;
-		Morse morse = new Morse(Liste.recupTexte(chaine),chaine);
+		Morse morse = new Morse(Liste.recupChar(chaine),chaine);
 		if(Liste.rechercheListe(chaineD, l)==true) {
 			d=creerArbreMorse(chaineD,l);
 		}
@@ -52,8 +52,22 @@ public class Trad {
 		a.setFilsg(g);
 		return a;		
 	}
-	public static String morseToTexte(String chaine,Arbre arbre) {
+	public static String morseToTexte(String chaine,Arbre arbre) throws IOException {
 		String texte="";
+		
+		int n = chaine.length() - chaine.replace("/", "").length();
+		int index;
+		for(int i = 0; i<n; i++) {
+			if(chaine.substring(0,1)==" ") {
+				texte = texte + " ";
+			}
+			else {
+				index = chaine.indexOf("/");
+				texte = texte+Liste.recupTexte(chaine.substring(0,index), arbre);
+                chaine = chaine.substring(index+1);  
+			}
+		}
+		
 		return texte;
 	}
 }

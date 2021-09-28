@@ -16,6 +16,10 @@ public class Main{
 		Liste l = Liste.creerListe();
 		Arbre arbre = Trad.creerArbreMorse("", l);
 		System.out.println(arbre);
-		
+		System.out.println(Trad.morseToTexte(".../---/.../ /-/...././---/", arbre));
+		System.out.println(l);
+		Morse morse = new Morse('?',"..--");
+		l = Liste.ajoutListe(morse, l);
+		System.out.println(l);
 	}
 }
