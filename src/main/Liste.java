@@ -110,7 +110,20 @@ public class Liste {
 	
 	public static Liste supprListe(String code, Liste liste) {
 		boolean verif = rechercheListe(code,liste);
-		
+		Liste p = liste;
+		Liste r = p;
+		if(verif==true) {
+			while(p!=null) {
+				String codeM = p.morse.code;
+	        	if(codeM.equals(code)) {
+	        		p=p.suite;
+	        		r.suite=p;
+	        		return liste;
+	        	}
+	        	r=p;
+				p=p.suite;
+			}
+		}
 		return liste;
 	}
 }

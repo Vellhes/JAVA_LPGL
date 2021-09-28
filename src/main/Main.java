@@ -21,5 +21,7 @@ public class Main{
 		Morse morse = new Morse('?',"..--");
 		l = Liste.ajoutListe(morse, l);
 		System.out.println(l);
+		l = Liste.supprListe("....", l);
+		System.out.println("Suppression : "+ l);
 	}
 }
