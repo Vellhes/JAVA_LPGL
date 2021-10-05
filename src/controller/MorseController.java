@@ -4,104 +4,71 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyEvent;
 import metiers.Arbre;
 import metiers.Liste;
 import metiers.Trad;
 
-
 public class MorseController implements Initializable{
 
     @FXML
-    private Button btn_morse;
+    private Button btn_effacer;
 
     @FXML
-    private Button btn_txt;
+    private TextArea tf_morse;
 
     @FXML
-    private TextField tf_trad;
-
-    @FXML
-    private Label lbl_langage;
-
-    @FXML
-    private Label lbl_trad;
-
-    @FXML
-    private Label lbl_condition;
+    private TextArea tf_txt;
     
-    @FXML
-    private Button btn_trad;
-
-    private String txtAMorse="Vous traduisez du texte au morse";
+    private String texte;
     
-    private String morseATxt="Vous traduisez du morse au texte";
+    private String morse;
     
-    private String conditionTxtAMorse="Veuillez ne pas utiliser de caractères spéciaux (?,!,%,/,etc..), uniquement des lettres hors accent et cédille";
+    private Liste liste;
     
-    private String conditionMorseATxt="Veuillez séparer chaque code morse par un caractère '/' sans placer d'espace";
+    private Arbre arbre;
     
-    private Liste liste = null;
-    
-    private Arbre arbre = null;
-    		
-    		
-	@Override
+    @Override
+    // Fonction d'initialisation
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
 			liste = Liste.creerListe();
 			arbre = Trad.creerArbreMorse("", liste);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		btn_morse.setDisable(true);
-		btn_txt.setDisable(false);
-		lbl_langage.setText(txtAMorse);
-		lbl_condition.setText(conditionTxtAMorse);
-		lbl_trad.setText("");
-		tf_trad.clear();
-		
+		effacer(null);
 	}
-	
-	@FXML
-	public void choixMorse() {
-		
-		btn_morse.setDisable(true);
-		btn_txt.setDisable(false);
-		lbl_langage.setText(txtAMorse);
-		lbl_condition.setText(conditionTxtAMorse);
-		lbl_trad.setText("");
-		tf_trad.clear();
-		
-	}
-	
-	@FXML
-	public void choixTxt() {
-	
-		btn_morse.setDisable(false);
-		btn_txt.setDisable(true);
-		lbl_langage.setText(morseATxt);
-		lbl_condition.setText(conditionMorseATxt);
-		lbl_trad.setText("");
-		tf_trad.clear();
-	}
-	
-	@FXML
-	public void trad() throws IOException {
-		if(btn_morse.isDisabled()==true && btn_txt.isDisabled()==false) {
-			lbl_trad.setText(Trad.texteToMorse(tf_trad.getText()));
-		}
-		if(btn_morse.isDisabled()==false && btn_txt.isDisabled()==true) {
-			lbl_trad.setText(Trad.morseToTexte(tf_trad.getText(),arbre));
-		}
-	}
-	
+
+    //Fonction qui efface le texte des textArea
+    @FXML
+    void effacer(ActionEvent event) {
+    	tf_txt.clear();
+    	tf_morse.clear();
+    }
+
+    //Fonction qui récupère le texte, le traduit et l'insere dans le textArea du morse
+    @FXML
+    void versMorse(KeyEvent event) throws IOException {
+    	texte=tf_txt.getText();
+    	morse=Trad.texteToMorse(texte);
+    	tf_morse.setText(morse);
+    }
+
+    //Fonction qui récupère le code morse, le traduit et l'insère dans le textArea du texte
+    @FXML
+    void versTexte(KeyEvent event) throws IOException {
+    	morse=tf_morse.getText();
+    	texte=Trad.morseToTexte(morse,arbre);
+    	tf_txt.setText(texte);
+    }
+
 	
 
-    
-    
 }

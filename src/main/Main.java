@@ -15,8 +15,8 @@ import metiers.Trad;
 public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("../fxml/Morse.fxml"));
-		primaryStage.setTitle("Traducteur Mores");
+		Parent root = FXMLLoader.load(getClass().getResource("../fxml/morse.fxml"));
+		primaryStage.setTitle("Traducteur Morse");
 		primaryStage.setScene(new Scene(root,600,400));
 		primaryStage.show();
 	}
