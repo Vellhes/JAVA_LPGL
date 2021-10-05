@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -60,6 +61,59 @@
                      </children>
                   </AnchorPane>
                </content>
+            </Tab>
+            <Tab text="Utilitaire">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="txtf_codeins" layoutX="90.0" layoutY="48.0" prefHeight="25.0" prefWidth="54.0" promptText="Code" />
+                        <Label layoutX="31.0" layoutY="14.0" text="Inserer un element">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_ins" layoutX="150.0" layoutY="47.0" mnemonicParsing="false" text="Inserer" onAction="#inserer">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="31.0" layoutY="80.0" text="Supprimer un element">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtf_lettreins" layoutX="31.0" layoutY="48.0" prefHeight="25.0" prefWidth="53.0" promptText="Lettre" />
+                        <TextField fx:id="txtf_codesuppr" layoutX="31.0" layoutY="110.0" prefHeight="25.0" prefWidth="55.0" promptText="Code" />
+                        <Label layoutX="31.0" layoutY="153.0" text="Rechercher un element">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_suppr" layoutX="91.0" layoutY="110.0" mnemonicParsing="false" text="Supprimer" onAction="#supprimer">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="txtf_coderech" layoutX="31.0" layoutY="186.0" prefHeight="25.0" prefWidth="49.0" promptText="Code" />
+                        <Button fx:id="btn_rech" layoutX="147.0" layoutY="188.0" mnemonicParsing="false" text="Rechercher" onAction="#rechercher">
+                           <font>
+                              <Font name="Arial Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="222.0" layoutY="52.0" text="Veuillez inserer la lettre et le code morse du nouvel element" textFill="GREY" />
+                        <Label layoutX="181.0" layoutY="114.0" text="Veuillez renseigner le code morse de l'element a supprimer" textFill="GREY" />
+                        <Label layoutX="241.0" layoutY="190.0" text="Veuillez renseigner soit le code soit la lettre a rechercher" textFill="GREY" />
+                        <TextField fx:id="txtf_lettrerech" layoutX="87.0" layoutY="186.0" prefHeight="25.0" prefWidth="50.0" promptText="Lettre" />
+                        <Label layoutX="31.0" layoutY="227.0" text="Traduire un fichier">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_versTxt" layoutX="31.0" layoutY="254.0" mnemonicParsing="false" text="vers Texte" onAction="#chercheFichierMorse" />
+                        <Button fx:id="btn_versMorse" layoutX="109.0" layoutY="254.0" mnemonicParsing="false" text="vers Morse" onAction="#chercheFichierTexte" />
+                     </children>
+                  </AnchorPane>
+              </content>
             </Tab>
         </tabs>
       </TabPane>

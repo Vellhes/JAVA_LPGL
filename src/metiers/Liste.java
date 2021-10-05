@@ -108,6 +108,18 @@ public class Liste {
 		}
 		return false;
 	}
+	
+	public static boolean rechercheListeLettre(char lettre,Liste l) {
+        while(l!=null) {
+        char lettreM= l.morse.lettre;
+        if(lettreM==lettre) {
+            return true;
+            }
+            l=l.suite;
+        }
+        return false;
+    }
+	
 	//Fonction qui retourne une liste après un ajout en Tête
 	public static Liste ajoutListe(Morse morse, Liste liste) {
 		Liste liste2 = new Liste(morse,liste);
@@ -123,6 +135,9 @@ public class Liste {
 			while(p!=null) {
 				String codeM = p.morse.code;
 	        	if(codeM.equals(code)) {
+	        		if(p==liste) {
+	        			return liste.suite;
+	        		}
 	        		p=p.suite;
 	        		r.suite=p;
 	        		return liste;
