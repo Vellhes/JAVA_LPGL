@@ -102,7 +102,7 @@ public class MorseController implements Initializable{
     @FXML
     void versMorse(KeyEvent event) throws IOException {
     	texte=tf_txt.getText();
-    	morse=Trad.texteToMorse(texte);
+    	morse=Trad.texteToMorse(texte, liste);
     	tf_morse.setText(morse);
     }
 
@@ -127,7 +127,7 @@ public class MorseController implements Initializable{
 	    	String ligne;
 	    	FileWriter fw = new FileWriter(nouvFichier);
 	    	while((ligne=br.readLine())!=null){
-	    		fw.write(Trad.texteToMorse(ligne)+" /");
+	    		fw.write(Trad.texteToMorse(ligne, liste)+" /\n");
 	    	}
 	    	fw.close();
 	    	Alert alertFin = new Alert(AlertType.INFORMATION);
@@ -150,7 +150,7 @@ public class MorseController implements Initializable{
         	String ligne;
         	FileWriter fw = new FileWriter(nouvFichier);
         	while((ligne=br.readLine())!=null){
-        		fw.write(Trad.morseToTexte(ligne, arbre)+" ");
+        		fw.write(Trad.morseToTexte(ligne, arbre)+"\n");
         	}
         	fw.close();
         	Alert alertFin = new Alert(AlertType.INFORMATION);
@@ -196,7 +196,7 @@ public class MorseController implements Initializable{
 			if(txtf_lettrerech.getText().isEmpty()==false && txtf_coderech.getText().isEmpty()==true) {
 				lettre = txtf_lettrerech.getText().charAt(0);
 				if(Liste.rechercheListeLettre(lettre, liste)) {
-					alerte.setContentText("Le code morse qui correspond au caractère "+lettre +" est : " + Liste.recupMorse(lettre));
+					alerte.setContentText("Le code morse qui correspond au caractère "+lettre +" est : " + Liste.recupMorse(lettre, liste));
 				}
 				else {
 					alerte.setContentText("Le caractère "+lettre+" n'existe pas dans la liste");

@@ -57,18 +57,19 @@ public class Liste {
 		return liste;  
 	}
 	//Fonction qui retourne le code morse d'une lettre donnée a partir de la liste.
-	public static String recupMorse(char c) throws IOException {
-		Liste liste = creerListe();
+	public static String recupMorse(char c, Liste liste) throws IOException {
 		//passage en majuscule pour éviter les erreurs
 		c=Character.toUpperCase(c);
-		while(liste.morse.lettre != c) {
-			liste = liste.suite;
+		while(liste.suite!=null) {
+			if(liste.morse.lettre==c)
+				return liste.morse.code;
+			else
+				liste = liste.suite;
 		}
-		return liste.morse.code;
+		return " ";
 	}
 	// Fonction qui retourne la lettre liée au code morse depuis la liste
-	public static char recupChar(String code) throws IOException {
-	        Liste liste = creerListe();
+	public static char recupChar(String code, Liste liste) throws IOException {
 	        while(liste!=null) {
 	        	String codeM = liste.morse.code;
 	        	if(codeM.equals(code)) {
@@ -92,10 +93,10 @@ public class Liste {
 	        		arbre=arbre.filsd;
 	        	}
 	        	i++;
-	        	lettre = arbre.feuille.lettre;
+	        	if(arbre.feuille!=null)
+	        		lettre = arbre.feuille.lettre;
 	        }
-	        return lettre;
-	                
+	        return lettre;      
 	    }
 	 //Cette fonction renvoie un booléen, a true si le code se trouve dans la liste, a false si il ne s'y trouve pas
 	public static boolean rechercheListe(String code, Liste l) {

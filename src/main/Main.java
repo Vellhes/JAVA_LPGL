@@ -40,7 +40,7 @@ public class Main extends Application{
 		//2.3 Recherche d'un code (vérification de sa présence)
 		boolean check;
 		check = Liste.rechercheListe(".--", l);
-		if(check) System.out.println(".-- Présent dans la liste");
+		if(check) System.out.println(".-- Présent dans la liste oui");
 		else System.out.println(".-- Absent de la liste");
 		
 		Arbre arbre = Trad.creerArbreMorse("", Liste.creerListe());
@@ -48,7 +48,5 @@ public class Main extends Application{
 		System.out.println(Trad.morseToTexte(".../---/.../ /-/...././---/", arbre));
 		
 		launch(args);
-		
-		
 	}
 }

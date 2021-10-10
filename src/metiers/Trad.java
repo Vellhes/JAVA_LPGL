@@ -3,7 +3,7 @@ import java.io.IOException;
 
 public class Trad {
 	//Fonction qui traduit le texte en code morse
-	public static String texteToMorse(String chaine) throws IOException {
+	public static String texteToMorse(String chaine, Liste liste) throws IOException {
 		String morse="";
 		//création de la chaine lettre par lettre
 		for(int i = 0; i < chaine.length(); i++) {
@@ -11,10 +11,10 @@ public class Trad {
 				morse = morse+" ";
 			}
 			else {
-				String lettreCode = Liste.recupMorse(chaine.charAt(i));
+				String lettreCode = Liste.recupMorse(chaine.charAt(i), liste);
 				morse = ""+morse+lettreCode;
 			}
-			morse = morse + " / ";
+			morse = morse + "/";
 		}
 		return morse;
 	}
@@ -42,7 +42,7 @@ public class Trad {
 		Arbre a = new Arbre();
 		Arbre g = null;
 		Arbre d = null;
-		Morse morse = new Morse(Liste.recupChar(chaine),chaine);
+		Morse morse = new Morse(Liste.recupChar(chaine, l),chaine);
 		//si il existe un code egal a chaineD/chaineG alors création d'un nouveau fils
 		if(Liste.rechercheListe(chaineD, l)==true) {
 			d=creerArbreMorse(chaineD,l);

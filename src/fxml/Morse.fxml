@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B8B8B8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MorseController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B8B8B8;" xmlns="http://javafx.com/javafx/8.0.301" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MorseController">
    <children>
       <TabPane prefHeight="432.0" prefWidth="600.0" style="-fx-background-color: #B8B8B8;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -48,12 +48,12 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #B8B8B8;">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" prefHeight="115.0" prefWidth="545.0" text="Lorsque vous écrivez dans la partie &quot;TEXTE&quot; veuillez n'utiliser que les 26 lettres de l'alphabet latin, sans accent ni cédille." textAlignment="JUSTIFY" wrapText="true">
+                        <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="70.0" prefWidth="545.0" text="Lorsque vous écrivez dans la partie &quot;TEXTE&quot; veuillez n'utiliser que les 26 lettres de l'alphabet latin, sans accent ni cédille (sauf si vous les avez ajoutées)." textAlignment="JUSTIFY" wrapText="true">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="14.0" layoutY="106.0" prefHeight="115.0" prefWidth="545.0" text="Lorsque vous écrivez dans la partie &quot;MORSE&quot; veuillez séparer chaque code par un caractère &quot;/&quot; (slash), et ne pas utiliser d'espace." textAlignment="JUSTIFY" wrapText="true">
+                        <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="106.0" prefHeight="70.0" prefWidth="545.0" text="Lorsque vous écrivez dans la partie &quot;MORSE&quot; veuillez séparer chaque code par un caractère &quot;/&quot; (slash), et ne pas utiliser d'espace." textAlignment="JUSTIFY" wrapText="true">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
@@ -67,12 +67,12 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="txtf_codeins" layoutX="90.0" layoutY="48.0" prefHeight="25.0" prefWidth="54.0" promptText="Code" />
-                        <Label layoutX="31.0" layoutY="14.0" text="Inserer un element">
+                        <Label layoutX="31.0" layoutY="17.0" text="Inserer un element">
                            <font>
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btn_ins" layoutX="150.0" layoutY="47.0" mnemonicParsing="false" text="Inserer" onAction="#inserer">
+                        <Button fx:id="btn_ins" layoutX="150.0" layoutY="47.0" mnemonicParsing="false" onAction="#inserer" text="Inserer">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -89,13 +89,13 @@
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btn_suppr" layoutX="91.0" layoutY="110.0" mnemonicParsing="false" text="Supprimer" onAction="#supprimer">
+                        <Button fx:id="btn_suppr" layoutX="91.0" layoutY="110.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
                         </Button>
                         <TextField fx:id="txtf_coderech" layoutX="31.0" layoutY="186.0" prefHeight="25.0" prefWidth="49.0" promptText="Code" />
-                        <Button fx:id="btn_rech" layoutX="147.0" layoutY="188.0" mnemonicParsing="false" text="Rechercher" onAction="#rechercher">
+                        <Button fx:id="btn_rech" layoutX="147.0" layoutY="188.0" mnemonicParsing="false" onAction="#rechercher" text="Rechercher">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
@@ -109,8 +109,8 @@
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btn_versTxt" layoutX="31.0" layoutY="254.0" mnemonicParsing="false" text="vers Texte" onAction="#chercheFichierMorse" />
-                        <Button fx:id="btn_versMorse" layoutX="109.0" layoutY="254.0" mnemonicParsing="false" text="vers Morse" onAction="#chercheFichierTexte" />
+                        <Button fx:id="btn_versTxt" layoutX="31.0" layoutY="254.0" mnemonicParsing="false" onAction="#chercheFichierMorse" text="vers Texte" />
+                        <Button fx:id="btn_versMorse" layoutX="109.0" layoutY="254.0" mnemonicParsing="false" onAction="#chercheFichierTexte" text="vers Morse" />
                      </children>
                   </AnchorPane>
               </content>
