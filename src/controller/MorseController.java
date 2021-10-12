@@ -114,6 +114,7 @@ public class MorseController implements Initializable{
     	tf_txt.setText(texte);
     }
     
+    
     @FXML
     void chercheFichierTexte() throws IOException {
     	FileChooser fileChooser = new FileChooser();
@@ -134,9 +135,7 @@ public class MorseController implements Initializable{
         	alertFin.setContentText("Votre fichier se trouve ici : "+nouvFichier.getAbsolutePath());
         	alertFin.showAndWait();
     	}
-	   
     }
-    
     @FXML
     void chercheFichierMorse() throws IOException{
     	FileChooser fileChooser = new FileChooser();
@@ -160,22 +159,28 @@ public class MorseController implements Initializable{
     }
     
     @FXML
-	void inserer(ActionEvent event) {
-		if( txtf_lettreins.getText().equals("") || txtf_codeins.getText().equals("")) {
+    void inserer(ActionEvent event) {
+        Alert alerte = new Alert(AlertType.WARNING);
+        if( txtf_lettreins.getText().equals("") || txtf_codeins.getText().equals("")) {
+            alerte.setContentText("Veuillez remplir les deux champs de texte");
+            alerte.showAndWait();
+        }else {
+            lettre = txtf_lettreins.getText().charAt(0);
+            code = txtf_codeins.getText();
+            if( Liste.rechercheListe(code, liste)==true || Liste.rechercheListeLettre(lettre, liste)==true) {
+                alerte.setContentText("Cette lettre ou ce code est déjà présent dans la liste.");
+                alerte.showAndWait();
+            }
+            else {
+                Morse m = new Morse(lettre,code);
+                liste = Liste.ajoutListe(m,liste);
+                System.out.println(liste);
+            }
+        }
+        txtf_lettreins.clear();
+        txtf_codeins.clear();
+    }
 
-			Alert alerte = new Alert(AlertType.WARNING);
-			alerte.setContentText("Veuillez remplir les deux champs de texte");
-			alerte.showAndWait();
-		}else {
-			lettre = txtf_lettreins.getText().charAt(0);
-			code = txtf_codeins.getText();
-			Morse m = new Morse(lettre,code);
-			liste = Liste.ajoutListe(m,liste);
-			System.out.println(liste);
-		}
-		txtf_lettreins.clear();
-		txtf_codeins.clear();
-	}
     @FXML
     void supprimer(ActionEvent event) {
     	code = txtf_codesuppr.getText();
